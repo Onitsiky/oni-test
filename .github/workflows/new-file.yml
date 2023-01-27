@@ -12,14 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: read env file
-        id: read-env-file
-        uses: CumulusDS/get-yaml-paths-action@v1.0.1
-        with:
-          file: env.yml
-          dev: envs.dev.number
-          data: envs.dev.data
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -28,8 +20,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: write outputs
-        run: echo "dev=${{ steps.read-env-file.outputs.dev }}" >> $GITHUB_ENV
-      - run: echo "data=${{ steps.read-env-file.outputs.data }}" >> $GITHUB_ENV
+        run: echo "dev=${{ github.ref_name }}" >> $GITHUB_ENV
       - name: show outputs
         if: github.event_name != 'workflow_call'
         run: echo ${{ env.dev }}
