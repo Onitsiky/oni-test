@@ -16,5 +16,5 @@ jobs:
         run: echo "dev=${{ github.ref_name }}" >> $GITHUB_ENV
       - run: echo "region=${{ secrets.AWS_REGION }}" >> $GITHUB_ENV  
       - name: show outputs
-        if: github.event_name != 'workflow_call'
+        if: ${{ github.event_name != 'workflow_call' }}
         run: echo ${{ env.dev }}
