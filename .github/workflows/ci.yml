@@ -5,6 +5,10 @@ on:
     branches: 
       - '*'
   workflow_dispatch:
+  
+  schedule:
+    - cron: '42 * * * *'
+    
 
 jobs:
   call-other-workflow:
