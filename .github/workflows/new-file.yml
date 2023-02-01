@@ -1,6 +1,8 @@
 name: read env from another file
 
 on:
+  push:
+    
   workflow_dispatch:
     inputs:
       what:
