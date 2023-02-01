@@ -17,4 +17,6 @@ jobs:
         run: echo "here"
   call:
     uses: ./.github/workflows/new-file.yml
+    with:
+      what: 'false'
     secrets: inherit
