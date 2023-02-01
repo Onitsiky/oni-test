@@ -27,5 +27,5 @@ jobs:
       - run: echo ${{ env.event }}
       - run: echo "region=${{ secrets.AWS_REGION }}" >> $GITHUB_ENV  
       - name: show outputs
-        if: ${{ github.event.inputs.what != 'false' }}
+        if: ${{ github.event.inputs.what != false }}
         run: echo ${{ env.dev }}
