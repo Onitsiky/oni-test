@@ -17,6 +17,4 @@ jobs:
         run: echo "here"
   call-other-workflow:
     uses: ./.github/workflows/new-file.yml
-    with:
-      what: true
     secrets: inherit
