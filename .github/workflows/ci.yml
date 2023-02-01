@@ -15,8 +15,3 @@ jobs:
     steps:
       - name: test
         run: echo "here"
-  call-other-workflow:
-    uses: ./.github/workflows/new-file.yml
-    with:
-      what: false
-    secrets: inherit
