@@ -18,5 +18,5 @@ jobs:
   call-other-workflow:
     uses: ./.github/workflows/new-file.yml
     with:
-      what: false
+      what: true
     secrets: inherit
