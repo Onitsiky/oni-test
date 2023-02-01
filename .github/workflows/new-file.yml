@@ -5,7 +5,7 @@ on:
     inputs:
       what:
         type: boolean
-        required: false
+        required: true
         default: true
     
   workflow_dispatch:
