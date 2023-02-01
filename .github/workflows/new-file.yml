@@ -2,25 +2,16 @@ name: read env from another file
 
 on:
   push:
-    inputs:
-      what:
-        type: boolean
-        required: true
-        default: true
+    
     
   workflow_dispatch:
     inputs:
       what:
         type: boolean
-        required: true
+        required: false
         default: true
 
   workflow_call:
-    inputs:
-      what:
-        type: boolean
-        required: true
-        default: true
 
 jobs:
   readEnv:
@@ -30,9 +21,8 @@ jobs:
 
       - name: write outputs
         run: echo "dev=${{ github.ref_name }}" >> $GITHUB_ENV
-      - run: echo ${{ github.events.inputs.what }}
       - run: echo "event=${{ github.event_name }}" >> $GITHUB_ENV
-        if: ${{ inputs.what || github.event_name == 'workflow_call'}}
+        if: ${{ github.event_name == 'schedule'}}
       - run: echo "region=${{ secrets.AWS_REGION }}" >> $GITHUB_ENV  
       - name: show outputs
         run: echo ${{ env.dev }}
