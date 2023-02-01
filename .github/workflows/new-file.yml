@@ -2,6 +2,11 @@ name: read env from another file
 
 on:
   push:
+    inputs:
+      what:
+        type: boolean
+        required: false
+        default: true
     
   workflow_dispatch:
     inputs:
