@@ -32,7 +32,7 @@ jobs:
         run: echo "dev=${{ github.ref_name }}" >> $GITHUB_ENV
       - run: echo ${{ github.events.inputs.what }}
       - run: echo "event=${{ github.event_name }}" >> $GITHUB_ENV
-        if: ${{ inputs.what != false }}
+        if: github.events.inputs.what != false
       - run: echo "region=${{ secrets.AWS_REGION }}" >> $GITHUB_ENV  
       - name: show outputs
         run: echo ${{ env.dev }}
