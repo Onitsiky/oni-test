@@ -2,6 +2,11 @@ name: read env from another file
 
 on:
   workflow_dispatch:
+    inputs:
+      what:
+        type: boolean
+        required: false
+        default: true
 
   workflow_call:
 
@@ -18,5 +23,5 @@ jobs:
       - run: echo ${{ env.event }}
       - run: echo "region=${{ secrets.AWS_REGION }}" >> $GITHUB_ENV  
       - name: show outputs
-        if: ${{ github.event_name != 'schedule' }}
+        if: ${{ github.event.inputs.what != 'false' }}
         run: echo ${{ env.dev }}
