@@ -9,7 +9,11 @@ on:
         default: true
 
   workflow_call:
-
+    inputs:
+      what:
+        type: boolean
+        required: false
+        default: true
 
 jobs:
   readEnv:
